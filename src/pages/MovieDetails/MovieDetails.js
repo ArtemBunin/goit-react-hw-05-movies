@@ -1,8 +1,8 @@
 import { getMovieDetails } from 'appi/appi';
 import { useEffect, useState, Suspense } from 'react';
-import { useParams, useLocation,NavLink,Outlet } from 'react-router-dom';
+import { useParams, useLocation, NavLink, Outlet } from 'react-router-dom';
 import { IMage, Box, Title, Text } from './MovieDetails.styled';
-export const MovieDetails = () => {
+ const MovieDetails = () => {
   const { movieId } = useParams();
   const [details, setDetails] = useState('null');
   const location = useLocation();
@@ -18,14 +18,14 @@ export const MovieDetails = () => {
     fetchDetails();
   }, [movieId]);
   if (!details) {
-    return null
+    return null;
   }
-  
+
   const { poster_path, title, genres, vote_average, overview, release_date } =
     details;
-if(!genres){
-    return
-}
+  if (!genres) {
+    return;
+  }
   const getGendres = genres => {
     return genres.map(genr => genr.name).join(',');
   };
@@ -34,8 +34,8 @@ if(!genres){
 
   return (
     <main>
-          <div style={{ marginLeft: '25px' }}>
-      <NavLink to={location.state?.from ?? '/'}>Go back</NavLink>
+      <div style={{ marginLeft: '25px' }}>
+        <NavLink to={location.state?.from ?? '/'}>Go back</NavLink>
       </div>
       <Box>
         <IMage
@@ -43,7 +43,6 @@ if(!genres){
           alt={title}
         />
         <div>
-        
           <Title>
             {title}({date.getFullYear()})
           </Title>
@@ -52,7 +51,6 @@ if(!genres){
           <Text>{overview}</Text>
           <Title>Genres</Title>
           <Text>{getGendres(genres)}</Text>
-         
         </div>
       </Box>
       <Text>Additional information</Text>
@@ -67,10 +65,11 @@ if(!genres){
             Reviews
           </NavLink>
         </li>
-      
       </ul>
-      <Suspense fallback={<div>Loading...</div>}><Outlet/></Suspense>
-      
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
+export default MovieDetails

@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 import { TrendList } from "components/TrendList/Trendlist"
 import { getTrending } from "appi/appi"
-export const Home=()=>{
+ const Home=()=>{
     const [trends,setTrends]= useState([]);
     useEffect(()=>{
 const fetchTrend=async ()=>{
@@ -16,3 +16,4 @@ fetchTrend()
 <TrendList trends={trends}/>
     </main>)
 }
+export default Home

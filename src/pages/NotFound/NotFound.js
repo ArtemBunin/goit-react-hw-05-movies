@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
- export const NOtFound =()=>{
+  const NOtFound =()=>{
 
     return (<main>
          This page doesn't exist. Go <Link to="/">Home</Link>
     </main>)
  }
+
+ export default NOtFound

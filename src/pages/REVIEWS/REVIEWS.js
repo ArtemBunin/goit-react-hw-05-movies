@@ -2,7 +2,7 @@ import { getMovieRewiew } from 'appi/appi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Review=()=>{
+ const Review=()=>{
 const [review,setReview]=useState()
 const { movieId } = useParams();
 
@@ -38,3 +38,4 @@ useEffect(()=>{
     )
 
 }
+export default Review
